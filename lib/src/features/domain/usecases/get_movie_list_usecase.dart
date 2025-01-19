@@ -5,7 +5,7 @@ import '../../data/dto/api_error.dart';
 import '../models/movie_list.dart';
 
 abstract class GetMovieListUseCase {
-  Future<Either<ApiError, MovieList>> getMovieList(String urlPath, int page);
+  Future<Either<ApiError, MovieList>> fetchMoviesList(String urlPath, int page);
 }
 
 class GetMovieListUseCaseImpl extends GetMovieListUseCase {
@@ -14,7 +14,7 @@ class GetMovieListUseCaseImpl extends GetMovieListUseCase {
   GetMovieListUseCaseImpl(this.movieRepository);
 
   @override
-  Future<Either<ApiError, MovieList>> getMovieList(String urlPath, int page) {
-    return movieRepository.fetchMovies(urlPath, page);
+  Future<Either<ApiError, MovieList>> fetchMoviesList(String urlPath, int page) {
+    return movieRepository.fetchMovieList(urlPath, page);
   }
 }

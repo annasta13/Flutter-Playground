@@ -7,5 +7,5 @@ class UrlPath {
   static const nowPlayingMovies = "now_playing";
   static const movieDetail = "movie/";
   static const movieReview = "/reviews";
-  static const baseUrl = "https://api.themoviedb.org/3/movie";
+  static const baseUrl = "https://api.themoviedb.org/3/";
 }

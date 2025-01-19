@@ -6,6 +6,8 @@ class PageContainer<T> extends StatelessWidget {
 
   final String? errorMessage;
 
+  final String? barTitle;
+
   final T? successState;
 
   final Function()? onRetry;
@@ -14,6 +16,7 @@ class PageContainer<T> extends StatelessWidget {
 
   const PageContainer(
       {required this.loading,
+      this.barTitle,
       this.errorMessage,
       this.successState,
       this.onRetry,
@@ -23,8 +26,8 @@ class PageContainer<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Movie List")),
-        body: Builder(builder: (context) {
+        appBar: barTitle != null ? AppBar(title: Text(barTitle ?? "")) : null,
+        body: SafeArea(child: Builder(builder: (context) {
           if (loading) {
             return const Center(child: CircularProgressIndicator());
           } else if (errorMessage != null) {
@@ -35,6 +38,6 @@ class PageContainer<T> extends StatelessWidget {
           } else {
             return const EmptyView(message: "Data not found", onRetry: null);
           }
-        }));
+        })));
   }
 }

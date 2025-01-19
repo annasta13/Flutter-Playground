@@ -4,6 +4,7 @@ import 'package:playground/src/features/data/api/movie_api.dart';
 import 'package:playground/src/features/data/api/movie_api_impl.dart';
 import 'package:playground/src/features/data/repositories/movie_repository_impl.dart';
 import 'package:playground/src/features/domain/repositories/movie_repository.dart';
+import 'package:playground/src/features/domain/usecases/get_movie_detail_usecase.dart';
 import 'package:playground/src/features/domain/usecases/get_movie_list_usecase.dart';
 
 import '../../core/network/interceptor.dart';
@@ -19,6 +20,9 @@ injectMovieModule() {
   Client client = InterceptedClient.build(interceptors: [ApiInterceptor()]);
   MovieApi movieApi = MovieApiImpl(client);
   MovieRepository movieRepository = MovieRepositoryImpl(movieApi);
-  GetMovieListUseCase useCase = GetMovieListUseCaseImpl(movieRepository);
-  getIt.registerSingleton(useCase);
+  GetMovieListUseCase movieListUseCase = GetMovieListUseCaseImpl(movieRepository);
+  getIt.registerSingleton(movieListUseCase);
+
+  GetMovieDetailUseCase getMovieDetailUseCase = GetMovieDetailUseCaseImpl(movieRepository);
+  getIt.registerSingleton(getMovieDetailUseCase);
 }

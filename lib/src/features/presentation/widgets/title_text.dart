@@ -1,25 +1,19 @@
 import 'package:flutter/material.dart';
 
-class BodyText extends StatelessWidget {
+class TitleText extends StatelessWidget {
   final String text;
   final TextStyle? style;
-  final FontWeight? fontWeight;
   final TextAlign? textAlign;
   final TextOverflow? overflow;
-  final int? maxLines;
+  final FontWeight? fontWeight;
 
-  const BodyText(this.text,
-      {super.key,
-      this.style,
-      this.textAlign,
-      this.fontWeight,
-      this.overflow,
-      this.maxLines});
+  const TitleText(this.text,
+      {super.key, this.style, this.textAlign, this.overflow, this.fontWeight});
 
   @override
   Widget build(BuildContext context) {
     const TextStyle baseStyle =
-        TextStyle(fontSize: 14, fontWeight: FontWeight.normal);
+        TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
     final TextStyle finalStyle = baseStyle.merge(style).copyWith(
           fontWeight: fontWeight,
         );
@@ -28,7 +22,6 @@ class BodyText extends StatelessWidget {
       style: finalStyle,
       textAlign: textAlign ?? TextAlign.start,
       overflow: overflow,
-      maxLines: maxLines,
     );
   }
 }

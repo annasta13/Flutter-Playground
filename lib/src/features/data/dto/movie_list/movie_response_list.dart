@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:playground/src/features/data/dto/movie_response_item.dart';
-import 'package:playground/src/features/domain/models/movie_item.dart';
+import 'package:playground/src/features/data/dto/movie_list/movie_response_item.dart';
 import 'package:playground/src/features/domain/models/movie_list.dart';
 
 part 'movie_response_list.g.dart';
@@ -20,13 +19,6 @@ class MovieResponseList {
     this.message,
     this.totalPages,
   });
-
-  static final mocked = MovieResponseList(
-    movieList: [MovieResponseItem.mocked],
-    page: 1,
-    message: null,
-    totalPages: 1,
-  );
 
   MovieList asMovieListDomain() => MovieList(
       items: movieList?.map((element) {

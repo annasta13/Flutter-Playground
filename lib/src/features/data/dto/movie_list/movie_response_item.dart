@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../domain/models/movie_item.dart';
+import '../../../domain/models/movie_item.dart';
 
 part 'movie_response_item.g.dart';
 
@@ -22,24 +22,21 @@ class MovieResponseItem {
     this.posterPath,
     required this.releaseDate,
   });
-  //
-  factory MovieResponseItem.fromJson(Map<String, dynamic> json) => _$MovieResponseItemFromJson(json);
-  toJson() => _$MovieResponseItemToJson(this);
 
-  static final mocked = MovieResponseItem(
-    id: 1,
-    originalTitle: "title",
-    overview: "overview",
-    posterPath: "path",
-    releaseDate: "21-21-2022",
-  );
+  //
+  factory MovieResponseItem.fromJson(Map<String, dynamic> json) =>
+      _$MovieResponseItemFromJson(json);
+
+  toJson() => _$MovieResponseItemToJson(this);
 
   MovieItem asMovieItemDomain() {
     return MovieItem(
       movieId: id,
       originalTitle: originalTitle,
       overview: overview,
-      posterPath: posterPath != null ? "https://image.tmdb.org/t/p/w300/$posterPath" : "",
+      posterPath: posterPath != null
+          ? "https://image.tmdb.org/t/p/w300/$posterPath"
+          : "",
       releaseDate: releaseDate,
     );
   }
@@ -48,4 +45,3 @@ class MovieResponseItem {
     return json?.map((e) => MovieResponseItem.fromJson(e)).toList() ?? [];
   }
 }
-

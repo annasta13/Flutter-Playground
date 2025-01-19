@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:playground/src/features/domain/models/movie_item.dart';
 import 'package:playground/src/features/domain/usecases/get_movie_list_usecase.dart';
-import 'package:playground/src/features/presentation/bloc/get_movie_list_event.dart';
+import 'package:playground/src/features/presentation/bloc/movie_list/get_movie_list_event.dart';
 
 import 'movie_list_state.dart';
 
@@ -18,7 +18,7 @@ class MovieListBloc extends Bloc<MovieListEvent, MovieListState> {
       }
       //
       final result =
-          await getMovieListUseCase.getMovieList(event.urlPath, event.page);
+          await getMovieListUseCase.fetchMoviesList(event.urlPath, event.page);
       result.fold(
         (error) {
           emit(MovieError(error.message)); // Handle error
